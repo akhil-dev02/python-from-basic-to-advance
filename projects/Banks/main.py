@@ -1,79 +1,12 @@
-# Data base
-"""
-users ={
-        Account :{
-                'name':user name,
-                'gmail':user gmail,
-                'balance':5000,
-                'password':password
-            }
-        }
-"""
-users={
-        1001:{'name':"Akhil",'gmail':"akhilbomma2003@gmail.com",'balance':5000,'password':'1001'},
-        1002:{'name':"Bomma",'gmail':"akhilbomma02@gmail.com",'balance':1000,'password':'1002'}
-        }
+from login import login
+from register import register
+from balance import get_balance
+from withdraw import withdraw
+from deposit import deposit
+from transfer import transfer
+from statement import mini_statement
+from logout import logout
 
-
-
-# Register function
-def register(username:str,gmail:str,balance:int,password:str)-> int:
-    return "Register page under development process"
-
-# login function
-def login(account:int,password:str)-> bool:
-    if account in users:
-        if users [account]['password'] == password:
-            return True
-        return False
-    return False
-
-# get balance
-def get_balance(account:int)-> str:
-    curr_balance = users[account]['balance']
-    return f"Current Balance is:{curr_balance}"
-
-# withdraw function
-def withdraw(account:int,withdraw_amount:int)-> str:
-    curr_balance = users[account]['balance']
-    if curr_balance >= withdraw_amount:
-        users[account]['balance'] -= withdraw_amount
-        return f"{withdraw_amount} withdraw successful and\
-                         current balance is :{users[account]['balance']}"
-    return "Insufficient Amount" 
-
-# deposit function
-def deposit(account:int,deposit_amount:int)-> str:
-    users[account]['balance'] += deposit_amount
-    return f"{deposit_amount} deposite successful and\
-                             current balance is :{users[account]['balance']}"
-
-# transfer function
-def transfer(sender_account: int, receiver_account: int, transfer_amount: int):
-
-    if receiver_account not in users:
-        return "Receiver account not found"
-
-    if users[sender_account]['balance'] >= transfer_amount:
-
-        users[sender_account]['balance'] -= transfer_amount
-        users[receiver_account]['balance'] += transfer_amount
-
-        return f"{transfer_amount} transfered successfully and current balance is : {users[sender_account]['balance']}"
-
-    return "Insufficient Amount"
-
-# mini statement function
-def mini_statement(account:int):
-    return "mini_statement page under development process"
-
-# logout function
-def logout():
-    print("Buy Buy buddy , see you later")
-    exit()
-
-
-# main
 if __name__=="__main__":
     print("welcome to the Mini Bank")
     print("1.login \n 2. Register")
@@ -103,7 +36,7 @@ if __name__=="__main__":
             elif choice == 5:
                 print(mini_statement(account = account))
             elif choice == 6:
-                print(logout())
+                logout()
             else:
                 print("Select your choice in between 1 to 6")
 
